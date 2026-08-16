@@ -1,0 +1,79 @@
+---
+pagination:
+  data: projects
+  size: 1
+  alias: project
+layout: layouts/base.njk
+permalink: "/project/{{ project.slug }}/index.html"
+eleventyComputed:
+  title: "{{ project.title }}"
+  description: "{{ project.description }}"
+  ogImage: "{{ project.video.poster }}"
+activeKey: work
+---
+<div class="page-shell page-shell--project">
+  <header class="project-header">
+    <a class="back-link" href="{{ '/work/' | url }}">← Work</a>
+    <span class="chapter-header__divider" aria-hidden="true"></span>
+    <p class="eyebrow">{{ project.date }}</p>
+    <h1>{{ project.title }}</h1>
+    <p class="chapter-header__subtitle">{{ site.tagline }}</p>
+    <p class="project-header__subtitle">{{ project.subtitle }}</p>
+  </header>
+
+  <main id="main" class="project-detail">
+    <section class="project-intro" aria-labelledby="overview-heading">
+      <div>
+        <p class="project-intro__index">Project / {{ (pagination.pageNumber + 1) | pad2 }}</p>
+        <h2 id="overview-heading">Overview</h2>
+      </div>
+      <div class="project-intro__copy">
+        <p class="project-intro__role"><span>Role</span><strong>{{ project.role }}</strong></p>
+        <p class="project-intro__summary">{{ project.overview }}</p>
+        <p class="project-intro__label">What I did</p>
+        <ul>
+          {% for item in project.highlights %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+        {% if project.external %}
+          <a class="text-link text-link--arrow" href="{{ project.external.url }}" target="_blank" rel="noreferrer">{{ project.external.label }}</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="project-media" aria-labelledby="video-heading">
+      <div class="project-media__heading">
+        <h2 id="video-heading">Demo Film</h2>
+      </div>
+      <div class="framed-media video-frame" style="--video-ratio: {{ project.video.width }} / {{ project.video.height }}">
+        <video controls preload="metadata" playsinline poster="{{ project.video.poster | url }}" aria-label="{{ project.video.label }}">
+          <source src="{{ project.video.src | url }}" type="video/mp4">
+          你的浏览器不支持 HTML5 视频。
+        </video>
+      </div>
+    </section>
+
+    {% for media in project.mediaSections %}
+      <section class="project-media" aria-labelledby="media-{{ loop.index }}-heading">
+        <div class="project-media__heading">
+          <h2 id="media-{{ loop.index }}-heading">{{ media.title }}</h2>
+        </div>
+        <ol class="slide-grid">
+          {% for slide in media.slides %}
+            <li>
+              <a class="framed-media slide-card" href="{{ slide | url }}" target="_blank" aria-label="查看{{ media.title }}第 {{ loop.index }} 页大图">
+                <img src="{{ slide | url }}" alt="{{ media.title }}第 {{ loop.index }} 页" width="1600" height="900" loading="lazy" decoding="async">
+                <span>{{ loop.index | pad2 }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    {% endfor %}
+
+    <nav class="project-next" aria-label="项目导航">
+      <a href="{{ '/work/' | url }}">返回 Work 查看全部项目 <span aria-hidden="true">→</span></a>
+    </nav>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

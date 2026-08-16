@@ -1,0 +1,14 @@
+node_modules/
+_site/
+tmp/
+.cache/
+.DS_Store
+*.log
+10的真实详细资料/
+每一页的UI/
+素材/
+contact-icons/
+docs/
+PRD-个人网站.md
+*完整开发计划.md
+scripts/create-public-resume.py

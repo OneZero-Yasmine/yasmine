@@ -1,0 +1,47 @@
+{
+  "status": "ready",
+  "description": "Yasmine 何依霖的随笔与个人故事。",
+  "items": [
+    {
+      "year": "2026",
+      "title": "我发现我在假装自己有判断力",
+      "type": "external",
+      "url": "https://mp.weixin.qq.com/s/E_2aHHVNZLFA_WAXQo8CQA",
+      "source": "10的真实详细资料/Notes页参考资料/2026年《我发现我在假装自己有判断力》.txt"
+    },
+    {
+      "year": "2026",
+      "title": "慢一些吧",
+      "type": "external",
+      "url": "https://mp.weixin.qq.com/s/Jl-9-zskM8srxbYVpxiiyg",
+      "source": "10的真实详细资料/Notes页参考资料/2026年《慢一些吧》.txt"
+    },
+    {
+      "year": "2025",
+      "title": "请认识我",
+      "type": "image",
+      "label": "长图文章",
+      "full": "/assets/images/notes/please-know-me-full.webp",
+      "segments": [
+        "/assets/images/notes/please-know-me-01.webp",
+        "/assets/images/notes/please-know-me-02.webp",
+        "/assets/images/notes/please-know-me-03.webp",
+        "/assets/images/notes/please-know-me-04.webp"
+      ],
+      "source": "10的真实详细资料/Notes页参考资料/2025年《请认识我》.png"
+    },
+    {
+      "year": "2025",
+      "title": "请听我的一些想法与故事",
+      "type": "image",
+      "label": "长图文章",
+      "full": "/assets/images/notes/thoughts-and-stories-full.webp",
+      "segments": [
+        "/assets/images/notes/thoughts-and-stories-01.webp",
+        "/assets/images/notes/thoughts-and-stories-02.webp",
+        "/assets/images/notes/thoughts-and-stories-03.webp"
+      ],
+      "source": "10的真实详细资料/Notes页参考资料/2025年《请听我的一些想法与故事》.png"
+    }
+  ]
+}

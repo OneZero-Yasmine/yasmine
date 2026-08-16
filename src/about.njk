@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+title: About
+description: Yasmine 何依霖的教育、创业、项目、实习与研究经历，以及生活照片。
+activeKey: about
+permalink: /about/index.html
+---
+<div class="page-shell">
+  {% set heading = "About" %}
+  {% set subtitle = site.tagline %}
+  {% include "components/page-header.njk" %}
+
+  <main id="main" class="chapter-content">
+    <section class="editorial-section editorial-section--statement">
+      {% set sectionId = "personal-statement" %}
+      {% set sectionTitle = "Personal Statement" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body">
+        <p class="personal-statement">{{ about.statement }}</p>
+      </div>
+    </section>
+
+    <section class="editorial-section">
+      {% set sectionId = "timeline" %}
+      {% set sectionTitle = "Timeline" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body">
+        <ol class="timeline-list">
+          {% for item in about.timeline %}
+            <li class="timeline-item">
+              <p class="timeline-item__date">{{ item.date }}</p>
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p class="timeline-item__role">{{ item.role }}</p>
+                {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+
+    <section class="editorial-section editorial-section--life">
+      {% set sectionId = "life" %}
+      {% set sectionTitle = "Life Photos" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body">
+        <div class="life-grid">
+          {% for photo in about.life %}
+            <figure class="framed-media life-photo{% if photo.long %} life-photo--long{% endif %}">
+              <a href="{{ photo.src | url }}" target="_blank" aria-label="查看{{ photo.title }}大图">
+                <img src="{{ photo.srcSmall | url }}" srcset="{{ photo.srcSmall | url }} 480w, {{ photo.src | url }} {{ photo.width }}w" sizes="(max-width: 767px) 86vw, (max-width: 1199px) 42vw, 18vw" alt="{{ photo.alt }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy" decoding="async">
+              </a>
+              <figcaption>{{ photo.title }}</figcaption>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

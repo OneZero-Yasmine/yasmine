@@ -1,0 +1,82 @@
+---
+layout: layouts/base.njk
+title: Work
+description: Yasmine 何依霖的产品、创业、实习与研究经历。
+activeKey: work
+permalink: /work/index.html
+---
+<div class="page-shell page-shell--wide">
+  {% set heading = "Work" %}
+  {% set subtitle = site.tagline %}
+  {% include "components/page-header.njk" %}
+
+  <main id="main" class="chapter-content">
+    <section class="editorial-section">
+      {% set sectionId = "projects" %}
+      {% set sectionTitle = "Project" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body project-list">
+        {% for item in work.projects %}
+          <article class="project-card">
+            <a class="project-card__link" href="{{ item.url | url }}" aria-label="查看项目：{{ item.title }}">
+              <figure class="framed-media project-card__media">
+                <img src="{{ item.cover | url }}" alt="{{ item.alt }}" width="1280" height="720" loading="lazy" decoding="async">
+              </figure>
+              <div class="project-card__content">
+                <p class="eyebrow">{{ item.date }}</p>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.summary }}</p>
+                <span class="project-card__arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="editorial-section">
+      {% set sectionId = "internship" %}
+      {% set sectionTitle = "Internship" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body text-records">
+        {% for item in work.internships %}
+          <article class="text-record">
+            <p class="eyebrow">{{ item.date }}</p>
+            <h3>{{ item.title }}</h3>
+            <p class="text-record__role">{{ item.role }}</p>
+            {% for paragraph in item.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+            <ul class="text-record__details">
+              {% for detail in item.details %}
+                <li><strong>{{ detail.label }}：</strong>{{ detail.text }}</li>
+              {% endfor %}
+            </ul>
+            {% if item.closing %}<p>{{ item.closing }}</p>{% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="editorial-section" id="research">
+      {% set sectionId = "research-heading" %}
+      {% set sectionTitle = "Research" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body text-records">
+        {% for item in work.research %}
+          <article class="text-record text-record--research">
+            <p class="eyebrow">{{ item.date }} · {{ item.role }}</p>
+            <h3>{{ item.title }}</h3>
+            {% for paragraph in item.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+            <ul class="text-record__details">
+              {% for detail in item.details %}
+                <li><strong>{{ detail.label }}：</strong>{{ detail.text }}</li>
+              {% endfor %}
+            </ul>
+            {% if item.closing %}<p>{{ item.closing }}</p>{% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

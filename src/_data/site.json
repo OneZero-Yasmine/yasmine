@@ -1,0 +1,13 @@
+{
+  "name": "Yasmine 何依霖",
+  "englishName": "Yasmine",
+  "chineseName": "何依霖",
+  "tagline": "Creator For the World",
+  "language": "zh-CN",
+  "baseUrl": "https://onezero-yasmine.github.io/yasmine/",
+  "pathPrefix": "/yasmine/",
+  "description": "Yasmine 何依霖的个人作品集：产品、创业、研究与写作。",
+  "email": "19857036730@163.com",
+  "github": "https://github.com/OneZero-Yasmine",
+  "ogImage": "/assets/images/og-default.jpg"
+}

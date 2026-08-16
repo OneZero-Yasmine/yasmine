@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e8dbcd">
+    <title>{{ title }} · {{ site.name }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <link rel="canonical" href="{{ page.url | absoluteUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }} · {{ site.name }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+    <meta property="og:image" content="{{ (ogImage or site.ogImage) | absoluteUrl }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="{{ '/assets/images/favicon.svg' | url }}" type="image/svg+xml">
+    <link rel="preload" href="{{ '/assets/fonts/cormorant-garamond-latin-400-normal.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+    <script>document.documentElement.classList.remove('no-js');</script>
+    <script src="{{ '/assets/js/site.js' | url }}" defer></script>
+  </head>
+  <body class="{{ bodyClass or 'inner-page' }}">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="page-frame" aria-hidden="true">
+      <span class="page-frame__corner page-frame__corner--tl"></span>
+      <span class="page-frame__corner page-frame__corner--tr"></span>
+      <span class="page-frame__corner page-frame__corner--bl"></span>
+      <span class="page-frame__corner page-frame__corner--br"></span>
+    </div>
+    {{ content | safe }}
+  </body>
+</html>

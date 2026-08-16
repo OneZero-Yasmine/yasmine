@@ -1,0 +1,31 @@
+[
+  {
+    "label": "Email",
+    "kind": "copy",
+    "iconImage": "/assets/images/contact/icon-email.png",
+    "copyValue": "19857036730@163.com"
+  },
+  {
+    "label": "WeChat",
+    "kind": "dialog",
+    "dialog": "wechat-dialog",
+    "image": "/assets/images/contact/wechat.webp",
+    "caption": "微信：10",
+    "iconImage": "/assets/images/contact/icon-wechat.png"
+  },
+  {
+    "label": "小红书",
+    "kind": "dialog",
+    "dialog": "xiaohongshu-dialog",
+    "image": "/assets/images/contact/xiaohongshu.webp",
+    "caption": "小红书：One Zero · 2200255542",
+    "iconImage": "/assets/images/contact/icon-xiaohongshu.png"
+  },
+  {
+    "label": "GitHub",
+    "kind": "link",
+    "url": "https://github.com/OneZero-Yasmine",
+    "iconImage": "/assets/images/contact/icon-github.png",
+    "external": true
+  }
+]

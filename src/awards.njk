@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Awards
+description: 关于 Voxsee 与 X-Sight 团队的媒体报道。
+activeKey: awards
+permalink: /awards/index.html
+---
+<div class="page-shell">
+  {% set heading = "Awards" %}
+  {% set subtitle = site.tagline %}
+  {% include "components/page-header.njk" %}
+
+  <main id="main" class="chapter-content">
+    <section class="editorial-section">
+      {% set sectionId = "media-features" %}
+      {% set sectionTitle = "Media Features" %}
+      {% include "components/section-title.njk" %}
+      <div class="section-body">
+        <ol class="media-list">
+          {% for item in awards.items %}
+            <li>
+              <time datetime="{{ item.date }}">{{ item.date }}</time>
+              <span class="media-list__rule" aria-hidden="true"></span>
+              <a href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }} <span class="external-mark" aria-hidden="true">↗</span></a>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

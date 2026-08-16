@@ -1,0 +1,119 @@
+{
+  "status": "ready",
+  "description": "Yasmine 何依霖的教育、创业、项目、实习与研究经历，以及生活照片。",
+  "statement": "我是何依霖,是浙江大学会计学23级本科生",
+  "timeline": [
+    {
+      "date": "2026.04—2026.07",
+      "title": "阿里巴巴 · 千问办公事业部",
+      "role": "政务团队 AI 解决方案实习生",
+      "description": "参与政务场景的一对一访谈与驻场观察，完成舆情监测、入户走访、台账填写等工作场景梳理，并参与 skill 制作与智能外呼产品 POC。",
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    },
+    {
+      "date": "2026.04—2026.06",
+      "title": "小虎起势 Tiger Begins",
+      "role": "产品经理与项目经理",
+      "description": "面向学生与上班族设计微放松 App，围绕短时太极跟练与沉浸式冥想完成产品定义、交互设计、前端搭建与团队协作。",
+      "source": "10的真实详细资料/个人简历.pdf，第 2 页"
+    },
+    {
+      "date": "2026.02—至今",
+      "title": "市值管理新规下投资者互动平台语义研究",
+      "role": "项目负责人",
+      "description": "围绕上市公司在投资者互动平台上的回复行为，使用 Bert、FinBert 与多期 DID 模型研究政策影响。",
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    },
+    {
+      "date": "2025.06—2025.09",
+      "title": "帆软软件有限公司",
+      "role": "战略部门产品战略实习生",
+      "description": "研究 AI Agent 开发平台与 Data Agent 产品，形成单项产品研究、行业发展与公司战略报告。",
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    },
+    {
+      "date": "2025.05—至今",
+      "title": "CalcAI 微积分AI助教",
+      "role": "产品经理与项目经理",
+      "description": "面向高校微积分课程设计班级管理、课程作业、错题统计和习题练习功能，并围绕 Prompt 与 RAG 优化答疑体验。",
+      "source": "10的真实详细资料/个人简历.pdf，第 2 页"
+    },
+    {
+      "date": "2025.01—2026.05",
+      "title": "杭州拓维无障碍智能科技有限公司",
+      "role": "创始人、项目经理与产品经理",
+      "description": "围绕视障人士生活需求推进 Voxsee，从需求访谈、产品形态与功能设计，到团队管理、赛事落地与商业沟通。",
+      "source": "10的真实详细资料/个人简历.pdf，第 1 页"
+    },
+    {
+      "date": "2024.03—至今",
+      "title": "浙江大学启真交叉学科创新创业实验室 X-Lab",
+      "role": "运营（泛商科）部门管理团队与财务负责人",
+      "description": "负责成员筛选、科创项目管理、费用审批与预算，并参与学生创新创业实践平台建设。",
+      "source": "10的真实详细资料/个人简历.pdf，第 2 页"
+    },
+    {
+      "date": "2023.09—至今",
+      "title": "浙江大学",
+      "role": "管理学院会计学本科",
+      "source": "10的真实详细资料/个人简历.pdf，第 1 页"
+    }
+  ],
+  "life": [
+    {
+      "title": "在老友记咖啡馆的SmellyCat小蛋糕",
+      "alt": "电脑旁的蛋糕、饮料与工作界面",
+      "src": "/assets/images/life/cake-960.webp",
+      "srcSmall": "/assets/images/life/cake-480.webp",
+      "width": 960,
+      "height": 720,
+      "source": "10的真实详细资料/About页参考资料/Life照片/蛋糕.heic"
+    },
+    {
+      "title": "在Ceol咖啡馆的健康午餐!",
+      "alt": "木桌上的烤鸡蔬菜饭与笔记本电脑",
+      "src": "/assets/images/life/food-960.webp",
+      "srcSmall": "/assets/images/life/food-480.webp",
+      "width": 960,
+      "height": 720,
+      "source": "10的真实详细资料/About页参考资料/Life照片/美食.heic"
+    },
+    {
+      "title": "跟crush们过生日",
+      "alt": "生日故事长图",
+      "src": "/assets/images/life/birthday-story-960.webp",
+      "srcSmall": "/assets/images/life/birthday-story-480.webp",
+      "width": 960,
+      "height": 1440,
+      "source": "10的真实详细资料/About页参考资料/Life照片/生日故事.jpg"
+    },
+    {
+      "title": "是本人",
+      "alt": "漫画风格头像",
+      "src": "/assets/images/life/comic-avatar-960.webp",
+      "srcSmall": "/assets/images/life/comic-avatar-480.webp",
+      "width": 959,
+      "height": 952,
+      "source": "10的真实详细资料/About页参考资料/Life照片/漫画头像.jpg"
+    },
+    {
+      "title": "丽水旅游小记",
+      "alt": "记录旅行经历的漫画长图",
+      "src": "/assets/images/life/travel-comic-1024.webp",
+      "srcSmall": "/assets/images/life/travel-comic-480.webp",
+      "width": 1024,
+      "height": 6144,
+      "long": true,
+      "source": "10的真实详细资料/About页参考资料/Life照片/旅游漫画故事.jpg"
+    },
+    {
+      "title": "日主甲木-食神格-喜木水",
+      "alt": "五行主题的生活记录长图",
+      "src": "/assets/images/life/wuxing-960.webp",
+      "srcSmall": "/assets/images/life/wuxing-480.webp",
+      "width": 960,
+      "height": 1449,
+      "source": "10的真实详细资料/About页参考资料/Life照片/五行.jpg"
+    }
+  ]
+}

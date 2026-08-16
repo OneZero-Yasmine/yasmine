@@ -1,0 +1,15 @@
+<nav class="book-toc {{ tocClass }}" aria-label="全站目录">
+  <ol>
+    {% for item in navigation %}
+      <li class="book-toc__item{% if activeKey == item.key %} is-current{% endif %}">
+        {% if activeKey == item.key %}
+          <span class="book-toc__label" aria-current="page">{{ item.label }}</span>
+        {% else %}
+          <a class="book-toc__label" href="{{ item.url | url }}">{{ item.label }}</a>
+        {% endif %}
+        <span class="book-toc__leader" aria-hidden="true"></span>
+        <span class="book-toc__roman">{{ item.roman }}</span>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>

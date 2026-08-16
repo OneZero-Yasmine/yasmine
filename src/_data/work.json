@@ -1,0 +1,113 @@
+{
+  "status": "ready",
+  "description": "Yasmine 何依霖的产品、创业、实习与研究经历。",
+  "projects": [
+    {
+      "title": "CalcAI 微积分AI助教",
+      "date": "2025.05—至今",
+      "summary": "面向高校微积分课程的 AI 助教，覆盖班级管理、课程作业、错题统计与习题练习。",
+      "url": "/project/calculus-ai/",
+      "cover": "/assets/images/posters/calculus-ai.webp",
+      "alt": "CalcuAI 微积分 AI 助教产品演示画面",
+      "tags": ["产品设计", "Prompt", "RAG"],
+      "source": "个人简历.pdf；CalcuAI 介绍PPT.pdf"
+    },
+    {
+      "title": "Tiger Begins 小虎起势",
+      "date": "2026.04—2026.06",
+      "summary": "以“微放松”为核心，面向学生与上班族的太极跟练与沉浸式冥想 App。",
+      "url": "/project/tiger/",
+      "cover": "/assets/images/posters/tiger.webp",
+      "alt": "小虎起势 App 产品演示画面",
+      "tags": ["产品体验", "IP 设计", "前端开发"],
+      "source": "个人简历.pdf；小虎起势产品介绍ppt.pdf"
+    },
+    {
+      "title": "Time Widget 桌面摆件",
+      "date": "2026",
+      "summary": "模仿 iPhone 健身圆环风格的 Windows 桌面时间小摆件。",
+      "url": "/project/time-widget/",
+      "cover": "/assets/images/posters/time-widget.webp",
+      "alt": "Liquid Glass Time Widget 桌面摆件演示画面",
+      "tags": ["Windows", "桌面组件", "Vibe Coding"],
+      "source": "Time Widget 介绍视频；GitHub 仓库描述"
+    },
+    {
+      "title": "Voxsee 面向视障者的智能辅具",
+      "date": "2025.01—2026.05",
+      "summary": "围绕视障人士生活需求设计的项链式智能辅助设备，从真实访谈推进到产品与团队落地。",
+      "url": "/project/voxsee/",
+      "cover": "/assets/images/posters/voxsee.webp",
+      "alt": "Voxsee 项链式智能辅助设备产品画面",
+      "tags": ["无障碍科技", "创业", "产品管理"],
+      "source": "个人简历.pdf；Voxsee 项目资料"
+    }
+  ],
+  "internships": [
+    {
+      "title": "阿里巴巴-千问办公事业部",
+      "role": "政务团队 AI解决方案实习生",
+      "date": "2026年4月-7月",
+      "paragraphs": [
+        "团队面向政府进行钉钉与千问办公(办公桌面智能体)等相关产品的销售与解决方案提供。为了提高产品在政务场景的适配度，我作为AI解决方案实习生进行基层社工工作痛点挖掘、skill开发、方案制作等一系列实践。"
+      ],
+      "details": [
+        {
+          "label": "一对一访谈与基层调研",
+          "text": "我去到杭州市五常街道(海创社区、风情社区、南滕社区等)与书记&社工们一对一访谈、驻场办公观察工作流程，基于高频x高价值x成本效益原则确定了“舆情监测、入户走访、台账填写”可提效工作场景。"
+        },
+        {
+          "label": "skill开发",
+          "text": "梳理原有工作流程完成了“负向舆情监测skill、入户走访管家skill、模板沉淀与台账填写skill”的制作。"
+        },
+        {
+          "label": "智能外呼方案设计与产品poc搭建",
+          "text": "社工主动告知失业帮扶场景下打电话的痛点，我基于钉钉AI数字员工能力与社工共同搭建了失业帮扶助手，完成电话拨打与岗位推荐与通话信息整理记录工作，社工用该poc顺利完成了50+通电话拨打。"
+        }
+      ],
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    },
+    {
+      "title": "帆软软件有限公司",
+      "role": "战略部门产品战略实习生",
+      "date": "2025年6月-2025年9月",
+      "paragraphs": [
+        "帆软是一家BI领域市场占率第一、专注于商业智能与大数据分析的平台提供商。我所在的部门围绕AI+ToB的行业趋势，洞察公司原有产品在AI战略转型中的新增增长点。"
+      ],
+      "details": [
+        {
+          "label": "市场规模分析",
+          "text": "为测算国内AI Agent开发平台的市场规模特征，针对2024/6-2025/7的1000+条Agent开发平台招投标信息搜集整理，并输出中标项目的特征总结分析报告。"
+        },
+        {
+          "label": "Agent搭建与开发平台功能对比",
+          "text": "使用Dify、Coze、阿里云百炼、轻流轻翼等agent开发平台搭建Agent并对比各开发平台功能，使用Swift Agent、数巅Ask BI、观远ChatBI、Xpert AI等DataAgent产品，并分别对比输出单项产品研究报告。"
+        }
+      ],
+      "closing": "基于以上分析结果输出“AI+BI”行业发展报告与公司短-中-长期战略报告。",
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    }
+  ],
+  "research": [
+    {
+      "title": "“实质性改善”还是“美化性包装”\n--基于市值管理新规下投资者互动平台语义挖掘的证据",
+      "role": "项目负责人",
+      "date": "2026年2月-至今",
+      "paragraphs": [
+        "本项目聚焦市值管理政策新规出台之后，受影响公司在投资者互动平台上的回复行为是否趋善。"
+      ],
+      "details": [
+        {
+          "label": "文献研究与课题提出",
+          "text": "我通过针对问询函、投资者互动平台、市值管理等多领域的文献阅读与研究，根据研究空白与研究价值提出论文课题，并组建团队完成项目方案制定。"
+        },
+        {
+          "label": "变量处理与模型构建",
+          "text": "我利用Bert预训练模型和FinBert情感分析模型深度挖掘非结构化文本信息，构建“答非所问”程度、语调等量化指标；并搭建多期DID模型跑回归、分析解释变量与被解释变量因果关系。"
+        }
+      ],
+      "closing": "项目已成功立项浙江大学校级SRTP项目，目前已进入收尾阶段。",
+      "source": "10的真实详细资料/个人简历.pdf，第 3 页"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "yasmine-personal-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets": "node scripts/build-assets.mjs",
+    "clean": "node -e \"require('node:fs').rmSync('_site',{recursive:true,force:true})\"",
+    "validate:content": "node scripts/validate-content.mjs",
+    "build": "npm run clean && npm run validate:content && eleventy",
+    "dev": "eleventy --serve",
+    "test": "node --test tests/*.test.mjs && node tests/browser-smoke.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "@fontsource/cormorant-garamond": "5.2.6",
+    "@fontsource/noto-serif-sc": "5.2.6",
+    "sharp": "0.35.3"
+  },
+  "devDependencies": {
+    "playwright-core": "1.62.1"
+  }
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "status": "ready",
+    "slug": "calculus-ai",
+    "title": "CalcuAI · 微积分 AI 助教",
+    "subtitle": "更智能的批改，更高效的学习",
+    "date": "2025.05—至今",
+    "description": "面向高校微积分课程的 AI 助教产品，覆盖班级、作业、错题与练习场景。",
+    "role": "产品经理 · 项目经理",
+    "overview": "负责把高校微积分课程需求转化为 AI 助教产品，并推动功能定义、交互设计与技术方案落地。",
+    "highlights": [
+      "梳理课程场景需求，将产品拆解为课程作业管理、错题统计、习题练习三大功能板块。",
+      "使用 Gemini 设计前端交互网页，并向技术团队交付包含产品功能与交互逻辑的 PRD。",
+      "围绕引导式答疑优化 Prompt，将教材习题与答案结构化处理为 RAG 数据库。"
+    ],
+    "video": {
+      "src": "/assets/video/calculus-ai.mp4",
+      "poster": "/assets/images/posters/calculus-ai.webp",
+      "width": 1280,
+      "height": 960,
+      "duration": "03:15",
+      "label": "CalcuAI 产品完整演示"
+    },
+    "mediaSections": [
+      {
+        "title": "产品介绍",
+        "description": "15 页材料依次呈现项目背景、产品概念、功能、技术实现和实践过程。",
+        "slides": [
+          "/assets/slides/calculus-ai/slide-01.webp",
+          "/assets/slides/calculus-ai/slide-02.webp",
+          "/assets/slides/calculus-ai/slide-03.webp",
+          "/assets/slides/calculus-ai/slide-04.webp",
+          "/assets/slides/calculus-ai/slide-05.webp",
+          "/assets/slides/calculus-ai/slide-06.webp",
+          "/assets/slides/calculus-ai/slide-07.webp",
+          "/assets/slides/calculus-ai/slide-08.webp",
+          "/assets/slides/calculus-ai/slide-09.webp",
+          "/assets/slides/calculus-ai/slide-10.webp",
+          "/assets/slides/calculus-ai/slide-11.webp",
+          "/assets/slides/calculus-ai/slide-12.webp",
+          "/assets/slides/calculus-ai/slide-13.webp",
+          "/assets/slides/calculus-ai/slide-14.webp",
+          "/assets/slides/calculus-ai/slide-15.webp"
+        ]
+      }
+    ],
+    "source": "10的真实详细资料/Work页参考资料/CalcuAI-微积分AI助教/"
+  },
+  {
+    "status": "ready",
+    "slug": "tiger",
+    "title": "小虎起势 Tiger Begins",
+    "subtitle": "面向学生与上班族的微放松 App",
+    "date": "2026.04—2026.06",
+    "description": "以“微放松”为核心，通过短时太极跟练和沉浸式冥想帮助用户放松身心。",
+    "role": "产品经理 · 项目经理",
+    "overview": "作为四人团队负责人，主导小虎起势从产品定位、交互设计到前端开发与交付的完整过程。",
+    "highlights": [
+      "通过多轮脑暴与竞品调研确定“微放松”定位，定义短时太极跟练、沉浸式冥想两大功能，并完成脑图与全部页面草图。",
+      "借助大模型生成高保真页面，带领团队搭建前端组件库，制定产品 PRD 与项目开发规范，并借助 Codex 完成 App 开发。",
+      "负责四人团队的任务分工与项目推进，推动产品从想法确定、设计到开发的全流程落地。"
+    ],
+    "video": {
+      "src": "/assets/video/tiger.mp4",
+      "poster": "/assets/images/posters/tiger.webp",
+      "width": 1280,
+      "height": 720,
+      "duration": "02:00",
+      "label": "小虎起势产品完整演示"
+    },
+    "mediaSections": [
+      {
+        "title": "产品体验设计",
+        "description": "7 页材料呈现项目概览、流程、设计亮点、IP 系统和两类核心交互。",
+        "slides": [
+          "/assets/slides/tiger/slide-01.webp",
+          "/assets/slides/tiger/slide-02.webp",
+          "/assets/slides/tiger/slide-03.webp",
+          "/assets/slides/tiger/slide-04.webp",
+          "/assets/slides/tiger/slide-05.webp",
+          "/assets/slides/tiger/slide-06.webp",
+          "/assets/slides/tiger/slide-07.webp"
+        ]
+      }
+    ],
+    "source": "10的真实详细资料/Work页参考资料/小虎起势Tiger Begins/"
+  },
+  {
+    "status": "ready",
+    "slug": "time-widget",
+    "title": "Liquid Glass Time Widget",
+    "subtitle": "Windows 桌面时间小摆件",
+    "date": "2026",
+    "description": "模仿 iPhone 健身圆环风格的 Windows 桌面时间小摆件。",
+    "role": "独立创作者 · Vibe Coding",
+    "overview": "独立完成一款模仿 iPhone 健身圆环视觉的 Windows 桌面时间小摆件，并整理为可本地运行的公开项目。",
+    "highlights": [
+      "确定健身圆环式信息层级与 Liquid Glass 视觉方向。",
+      "借助 AI Studio 进行 Vibe Coding，完成界面与时间展示功能。",
+      "整理项目运行配置、环境变量示例与源码，并发布至 GitHub。"
+    ],
+    "video": {
+      "src": "/assets/video/time-widget.mp4",
+      "poster": "/assets/images/posters/time-widget.webp",
+      "width": 1280,
+      "height": 720,
+      "duration": "00:34",
+      "label": "Liquid Glass Time Widget 完整演示"
+    },
+    "external": {
+      "label": "查看 GitHub 仓库",
+      "url": "https://github.com/OneZero-Yasmine/Liquid-Glass-Time-Widget"
+    },
+    "mediaSections": [],
+    "source": "10的真实详细资料/Work页参考资料/桌面摆件Time Widget/"
+  },
+  {
+    "status": "ready",
+    "slug": "voxsee",
+    "title": "Voxsee",
+    "subtitle": "面向视障者的普惠级无障碍智能硬件",
+    "date": "2025.01—2026.05",
+    "description": "从真实需求访谈出发，围绕视障人士生活场景推进的项链式智能辅助设备。",
+    "role": "创始人 · 项目经理 · 产品经理",
+    "overview": "作为十五人团队总负责人，主导 Voxsee 从视障者需求验证、产品定义、团队管理到商业化与赛事落地的全过程。",
+    "highlights": [
+      "收集 100+ 份问卷，对 16 家盲人按摩店、20 余名视障者以及业内视障领域公司高管进行调研和实地访谈，明确痛点与需求。",
+      "根据用户核心需求确定本地与云端两大功能板块，决定采用项链式形态；使用 Figma 手绘 100+ 页项目 PPT 与产品概念图，并协调设计团队完成产品 CG。",
+      "管理商业、设计、技术三支团队推进项目，对接投资人、参加助残与创业赛事，推动公司成立并获得政策资金支持。"
+    ],
+    "video": {
+      "src": "/assets/video/voxsee.mp4",
+      "poster": "/assets/images/posters/voxsee.webp",
+      "width": 1280,
+      "height": 720,
+      "duration": "00:05",
+      "label": "Voxsee 产品展示"
+    },
+    "mediaSections": [
+      {
+        "title": "创业故事自述",
+        "description": "8 页材料回顾从创业动机、需求调研到项目成果与个人成长的过程。",
+        "slides": [
+          "/assets/slides/voxsee-story/slide-01.webp",
+          "/assets/slides/voxsee-story/slide-02.webp",
+          "/assets/slides/voxsee-story/slide-03.webp",
+          "/assets/slides/voxsee-story/slide-04.webp",
+          "/assets/slides/voxsee-story/slide-05.webp",
+          "/assets/slides/voxsee-story/slide-06.webp",
+          "/assets/slides/voxsee-story/slide-07.webp",
+          "/assets/slides/voxsee-story/slide-08.webp"
+        ]
+      },
+      {
+        "title": "复盘与经验分享",
+        "description": "13 页材料记录赛事选择、评分理解、团队、知识库、项目推进和心态复盘。",
+        "slides": [
+          "/assets/slides/voxsee-review/slide-01.webp",
+          "/assets/slides/voxsee-review/slide-02.webp",
+          "/assets/slides/voxsee-review/slide-03.webp",
+          "/assets/slides/voxsee-review/slide-04.webp",
+          "/assets/slides/voxsee-review/slide-05.webp",
+          "/assets/slides/voxsee-review/slide-06.webp",
+          "/assets/slides/voxsee-review/slide-07.webp",
+          "/assets/slides/voxsee-review/slide-08.webp",
+          "/assets/slides/voxsee-review/slide-09.webp",
+          "/assets/slides/voxsee-review/slide-10.webp",
+          "/assets/slides/voxsee-review/slide-11.webp",
+          "/assets/slides/voxsee-review/slide-12.webp",
+          "/assets/slides/voxsee-review/slide-13.webp"
+        ]
+      }
+    ],
+    "source": "10的真实详细资料/Work页参考资料/Voxsee-面向视障者的普惠级无障碍智能硬件/"
+  }
+]

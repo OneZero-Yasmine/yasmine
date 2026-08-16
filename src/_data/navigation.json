@@ -1,0 +1,6 @@
+[
+  { "label": "About", "roman": "I", "url": "/about/", "key": "about" },
+  { "label": "Work", "roman": "II", "url": "/work/", "key": "work" },
+  { "label": "Notes", "roman": "III", "url": "/notes/", "key": "notes" },
+  { "label": "Awards", "roman": "IV", "url": "/awards/", "key": "awards" }
+]

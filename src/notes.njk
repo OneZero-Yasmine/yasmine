@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+title: Notes
+description: Yasmine 何依霖的随笔与个人故事。
+activeKey: notes
+permalink: /notes/index.html
+---
+<div class="page-shell">
+  {% set heading = "Notes" %}
+  {% set subtitle = site.tagline %}
+  {% include "components/page-header.njk" %}
+
+  <main id="main" class="chapter-content chapter-content--reading">
+    <section aria-labelledby="notes-list-title">
+      <h2 id="notes-list-title" class="visually-hidden">文章列表</h2>
+      <ol class="article-list">
+        {% set lastYear = "" %}
+        {% for item in notes.items %}
+          <li class="article-list__item">
+            <span class="article-list__year">{% if item.year != lastYear %}{{ item.year }}{% endif %}</span>
+            <span class="article-list__rule" aria-hidden="true"></span>
+            <div class="article-list__content">
+              {% if item.type == "external" %}
+                <a href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }} <span class="external-mark" aria-hidden="true">↗</span></a>
+              {% else %}
+                <details class="image-article">
+                  <summary>{{ item.title }} <span>{{ item.label }}</span></summary>
+                  <div class="image-article__body">
+                    {% for segment in item.segments %}
+                      <img src="{{ segment | url }}" alt="{{ item.title }}第 {{ loop.index }} 段" width="1200" height="1700" loading="lazy" decoding="async">
+                    {% endfor %}
+                    <a class="text-link text-link--arrow" href="{{ item.full | url }}" target="_blank">查看完整长图</a>
+                  </div>
+                </details>
+              {% endif %}
+            </div>
+          </li>
+          {% set lastYear = item.year %}
+        {% endfor %}
+      </ol>
+    </section>
+  </main>
+
+  {% include "components/footer.njk" %}
+</div>

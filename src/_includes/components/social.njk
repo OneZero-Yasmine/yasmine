@@ -1,0 +1,38 @@
+<section class="social-section" aria-label="联系方式">
+  <span class="ornament-rule" aria-hidden="true"></span>
+  <ul class="social-list">
+    {% for item in social %}
+      <li>
+        {% if item.kind == 'copy' %}
+          <button class="social-link" type="button" data-copy-email="{{ item.copyValue }}" aria-label="点击复制邮箱地址 {{ item.copyValue }}">
+            <span class="social-link__icon" aria-hidden="true"><img src="{{ item.iconImage | url }}" alt="" width="36" height="36"></span>
+            <span data-email-label>{{ item.label }}</span>
+          </button>
+        {% elif item.kind == 'dialog' %}
+          <button class="social-link" type="button" data-dialog-open="{{ item.dialog }}">
+            <span class="social-link__icon" aria-hidden="true"><img src="{{ item.iconImage | url }}" alt="" width="36" height="36"></span>
+            <span>{{ item.label }}</span>
+          </button>
+        {% else %}
+          <a class="social-link" href="{{ item.url }}"{% if item.external %} target="_blank" rel="noreferrer"{% endif %}>
+            <span class="social-link__icon" aria-hidden="true"><img src="{{ item.iconImage | url }}" alt="" width="36" height="36"></span>
+            <span>{{ item.label }}</span>
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <span class="ornament-rule ornament-rule--bottom" aria-hidden="true"></span>
+</section>
+<p class="copy-status visually-hidden" data-copy-status aria-live="polite"></p>
+
+{% for item in social %}
+  {% if item.kind == 'dialog' %}
+    <dialog class="contact-dialog" id="{{ item.dialog }}" aria-labelledby="{{ item.dialog }}-title">
+      <button class="contact-dialog__close" type="button" data-dialog-close aria-label="关闭">×</button>
+      <h2 id="{{ item.dialog }}-title">{{ item.label }}</h2>
+      <img src="{{ item.image | url }}" alt="{{ item.label }}联系方式二维码" width="640" height="820" loading="lazy">
+      <p>{{ item.caption }}</p>
+    </dialog>
+  {% endif %}
+{% endfor %}
