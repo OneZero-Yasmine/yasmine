@@ -110,6 +110,14 @@ test("navigation excludes Research and renumbers the remaining sections", async 
   assert.match(html, />Awards<\/a>[\s\S]*?>IV<\/span>/);
 });
 
+test("home cover displays Yasmine once as the page heading", async () => {
+  const html = await readFile(path.join(siteRoot, "index.html"), "utf8");
+  const cover = html.match(/<main id="main" class="home-cover">([\s\S]*?)<\/main>/)?.[1];
+  assert.ok(cover);
+  assert.match(cover, /<h1 class="home-cover__name" lang="en">Yasmine<\/h1>/);
+  assert.equal((cover.match(/>Yasmine<\/(?:h1|p)>/g) ?? []).length, 1);
+});
+
 test("contact controls use the confirmed public contact details", async () => {
   const html = await readFile(path.join(siteRoot, "about/index.html"), "utf8");
   assert.doesNotMatch(html, /href="mailto:/);
