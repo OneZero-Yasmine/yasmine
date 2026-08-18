@@ -30,8 +30,8 @@
   {% if item.kind == 'dialog' %}
     <dialog class="contact-dialog" id="{{ item.dialog }}" aria-labelledby="{{ item.dialog }}-title">
       <button class="contact-dialog__close" type="button" data-dialog-close aria-label="关闭">×</button>
-      <h2 id="{{ item.dialog }}-title">{{ item.label }}</h2>
-      <img src="{{ item.image | url }}" alt="{{ item.label }}联系方式二维码" width="640" height="820" loading="lazy">
+      <h2 id="{{ item.dialog }}-title">{{ item.title or item.label }}</h2>
+      <img src="{{ item.image | url }}" alt="{{ item.alt }}" width="{{ item.width }}" height="{{ item.height }}" loading="lazy">
       <p>{{ item.caption }}</p>
     </dialog>
   {% endif %}

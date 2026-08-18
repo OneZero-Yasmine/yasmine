@@ -48,6 +48,7 @@ async function inspectPage(context, route, name) {
   const page = await context.newPage();
   const consoleErrors = [];
   const failedRequests = [];
+  const thirdPartyRequests = [];
   page.on("console", (message) => {
     if (message.type() === "error") consoleErrors.push(message.text());
   });
@@ -58,6 +59,9 @@ async function inspectPage(context, route, name) {
     // after browser metadata is available.
     if (request.resourceType() === "media" && error.includes("ERR_ABORTED")) return;
     failedRequests.push(`${request.url()}: ${error}`);
+  });
+  page.on("request", (request) => {
+    if (new URL(request.url()).origin !== new URL(base).origin) thirdPartyRequests.push(request.url());
   });
 
   const response = await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
@@ -72,6 +76,7 @@ async function inspectPage(context, route, name) {
   assert.equal(metrics.imagesReady, true, `${route} has an unloaded image`);
   assert.deepEqual(consoleErrors, [], `${route} console errors: ${consoleErrors.join(" | ")}`);
   assert.deepEqual(failedRequests, [], `${route} failed requests: ${failedRequests.join(" | ")}`);
+  assert.deepEqual(thirdPartyRequests, [], `${route} loads third-party resources: ${thirdPartyRequests.join(" | ")}`);
   await page.screenshot({ path: path.join(screenshotRoot, `${name}.png`), fullPage: false });
   return page;
 }
@@ -98,13 +103,13 @@ try {
       assert.equal(await page.locator('a[href^="mailto:"]').count(), 0);
       await page.getByRole("button", { name: /点击复制邮箱地址/ }).click();
       await page.waitForFunction(() => document.querySelector("[data-copy-status]")?.textContent.trim());
-      assert.match(await page.locator("[data-copy-status]").textContent(), /19857036730@163\.com/);
+      assert.match(await page.locator("[data-copy-status]").textContent(), /tansy7077@gmail\.com/);
     }
     if (route === "/awards/") {
-      await page.getByRole("button", { name: "WeChat" }).click();
-      await assert.doesNotReject(page.locator("#wechat-dialog").waitFor({ state: "visible" }));
+      await page.getByRole("button", { name: "微信公众号" }).click();
+      await assert.doesNotReject(page.locator("#wechat-official-account-dialog").waitFor({ state: "visible" }));
       await page.keyboard.press("Escape");
-      await assert.doesNotReject(page.locator("#wechat-dialog").waitFor({ state: "hidden" }));
+      await assert.doesNotReject(page.locator("#wechat-official-account-dialog").waitFor({ state: "hidden" }));
     }
     await page.close();
   }

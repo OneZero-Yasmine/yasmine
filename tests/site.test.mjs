@@ -67,14 +67,21 @@ test("navigation excludes Research and renumbers the remaining sections", async 
   assert.match(html, />Awards<\/a>[\s\S]*?>IV<\/span>/);
 });
 
-test("contact controls use the supplied icons and copy Email without a separate copy label", async () => {
+test("contact controls use the confirmed public contact details", async () => {
   const html = await readFile(path.join(siteRoot, "about/index.html"), "utf8");
   assert.doesNotMatch(html, /href="mailto:/);
-  assert.match(html, /data-copy-email="19857036730@163\.com"/);
+  assert.match(html, /data-copy-email="tansy7077@gmail\.com"/);
+  assert.doesNotMatch(html, /data-copy-email="1[3-9]\d{9}@/);
   assert.doesNotMatch(html, />复制<\/button>/);
   for (const name of ["email", "wechat", "xiaohongshu", "github"]) {
     assert.match(html, new RegExp(`icon-${name}\\.png`));
   }
+  assert.match(html, />微信公众号<\/span>/);
+  assert.match(html, /id="wechat-official-account-dialog"/);
+  assert.match(html, />碳基生物反思日志<\/h2>/);
+  assert.match(html, /alt="碳基生物反思日志微信公众号二维码"/);
+  assert.match(html, /微信公众号：碳基生物反思日志/);
+  assert.doesNotMatch(html, /assets\/images\/contact\/wechat\.webp/);
 });
 
 test("project slide sections omit the descriptive line below their heading", async () => {
@@ -122,12 +129,13 @@ test("About uses the confirmed Life Photos captions and keeps the travel comic l
   assert.match(html, /class="framed-media life-photo life-photo--long"[\s\S]*?href="\/yasmine\/assets\/images\/life\/travel-comic-1024\.webp"/);
 });
 
-test("About omits the PDF resume and Zhejiang University GPA", async () => {
+test("About omits the PDF resume and private academic scores", async () => {
   const html = await readFile(path.join(siteRoot, "about/index.html"), "utf8");
   assert.doesNotMatch(html, /yasmine-resume-public\.pdf/);
   assert.doesNotMatch(html, /查看公开版简历/);
-  assert.doesNotMatch(html, /4\.09\/4\.3/);
-  assert.doesNotMatch(html, /89\.95\/100/);
+  assert.doesNotMatch(html, /\bGPA\b/i);
+  assert.doesNotMatch(html, /绩点/);
+  assert.doesNotMatch(html, /\b\d{1,3}(?:\.\d{1,2})?\/(?:4(?:\.\d{1,2})?|100)\b/);
   assert.equal(await exists(path.join(siteRoot, "assets/documents/yasmine-resume-public.pdf")), false);
 });
 

@@ -60,7 +60,7 @@ async function copyFonts() {
 async function buildContact() {
   const dir = out("images", "contact");
   await ensure(dir);
-  await webp(source("微信联系方式.jpg"), path.join(dir, "wechat.webp"), 640, 82);
+  await webp(source("微信公众号-碳基生物反思日志.jpeg"), path.join(dir, "wechat-official-account.webp"), 430, 82);
   await webp(source("小红书联系方式.jpg"), path.join(dir, "xiaohongshu.webp"), 640, 82);
 }
 
@@ -84,7 +84,7 @@ async function buildLife() {
     { input: source("About页参考资料", "Life照片", "生日故事.jpg"), name: "birthday-story", large: 960 },
     { input: source("About页参考资料", "Life照片", "漫画头像.jpg"), name: "comic-avatar", large: 960 },
     { input: source("About页参考资料", "Life照片", "旅游漫画故事.jpg"), name: "travel-comic", large: 1024 },
-    { input: source("About页参考资料", "Life照片", "五行.jpg"), name: "wuxing", large: 960 }
+    { input: source("About页参考资料", "Life照片", "五行-公开版.jpeg"), name: "wuxing", large: 960 }
   ];
 
   for (const item of items) {

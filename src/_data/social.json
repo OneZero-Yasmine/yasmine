@@ -3,14 +3,18 @@
     "label": "Email",
     "kind": "copy",
     "iconImage": "/assets/images/contact/icon-email.png",
-    "copyValue": "19857036730@163.com"
+    "copyValue": "tansy7077@gmail.com"
   },
   {
-    "label": "WeChat",
+    "label": "微信公众号",
     "kind": "dialog",
-    "dialog": "wechat-dialog",
-    "image": "/assets/images/contact/wechat.webp",
-    "caption": "微信：10",
+    "dialog": "wechat-official-account-dialog",
+    "title": "碳基生物反思日志",
+    "image": "/assets/images/contact/wechat-official-account.webp",
+    "alt": "碳基生物反思日志微信公众号二维码",
+    "width": 430,
+    "height": 430,
+    "caption": "微信公众号：碳基生物反思日志",
     "iconImage": "/assets/images/contact/icon-wechat.png"
   },
   {
@@ -18,6 +22,9 @@
     "kind": "dialog",
     "dialog": "xiaohongshu-dialog",
     "image": "/assets/images/contact/xiaohongshu.webp",
+    "alt": "Yasmine 的小红书联系方式二维码",
+    "width": 640,
+    "height": 873,
     "caption": "小红书：One Zero · 2200255542",
     "iconImage": "/assets/images/contact/icon-xiaohongshu.png"
   },
