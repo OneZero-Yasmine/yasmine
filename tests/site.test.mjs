@@ -37,6 +37,14 @@ test("generates exactly the ten required page contracts", async () => {
   for (const page of pages) assert.equal(await exists(path.join(siteRoot, page)), true, `${page} should exist`);
 });
 
+test("every page uses the favicon asset", async () => {
+  assert.equal(await exists(path.join(siteRoot, "assets", "images", "favicon.png")), true);
+  for (const page of pages) {
+    const html = await readFile(path.join(siteRoot, page), "utf8");
+    assert.match(html, /<link rel="icon" href="\/yasmine\/assets\/images\/favicon\.png" type="image\/png">/);
+  }
+});
+
 test("sitemap contains every public page and excludes the 404 page", async () => {
   const xml = await readFile(path.join(siteRoot, "sitemap.xml"), "utf8");
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
