@@ -223,11 +223,17 @@ test("Work uses the confirmed project names and preserves resume internship and 
   for (const phrase of [
     "团队面向政府进行钉钉与千问办公(办公桌面智能体)等相关产品的销售与解决方案提供。",
     "一对一访谈与基层调研",
+    "舆情监测、入户走访、台账填写、失业帮扶",
+    "招标筛选与推送skill",
     "社工用该poc顺利完成了50+通电话拨打。",
+    "prompt模板设计",
+    "最终产出浙江省余杭区法院专属纪要prompt，并得到客户采用。",
     "帆软是一家BI领域市场占率第一、专注于商业智能与大数据分析的平台提供商。",
     "Agent搭建与开发平台功能对比",
     "基于以上分析结果输出“AI+BI”行业发展报告与公司短-中-长期战略报告。"
   ]) assert.equal(html.includes(phrase), true, `Work should preserve ${phrase}`);
+  assert.equal(html.includes("入户走访管家skill"), false);
+  assert.equal(html.includes("社工主动告知失业帮扶场景下打电话的痛点"), false);
 
   assert.doesNotMatch(html, /aria-label="研究关键词"/);
   for (const phrase of [
