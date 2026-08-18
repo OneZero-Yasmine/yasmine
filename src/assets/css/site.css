@@ -758,16 +758,6 @@ h3 {
   letter-spacing: 0.08em;
 }
 
-.home-cover h1 {
-  margin-bottom: 8px;
-  font-family: "Noto Serif SC", "Songti SC", SimSun, serif;
-  font-size: clamp(2.7rem, 5vw, 4.2rem);
-  font-weight: 400;
-  line-height: 1.22;
-  letter-spacing: 0.18em;
-  text-indent: 0.18em;
-}
-
 .home-cover__tagline {
   margin-bottom: 42px;
 }
@@ -1226,10 +1216,6 @@ h3 {
     font-size: 4rem;
   }
 
-  .home-cover h1 {
-    font-size: 2.5rem;
-  }
-
   .home-cover__tagline {
     font-size: 0.72rem;
     letter-spacing: 0.24em;
@@ -1324,10 +1310,6 @@ h3 {
   .home-cover__name {
     font-size: 3.55rem;
     letter-spacing: 0.05em;
-  }
-
-  .home-cover h1 {
-    font-size: 2.25rem;
   }
 
   .book-toc__item {
