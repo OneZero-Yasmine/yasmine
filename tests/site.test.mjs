@@ -39,6 +39,19 @@ test("production HTML contains no visual-mock sample content", async () => {
   }
 });
 
+test("public pages omit private identity and planning context", async () => {
+  const privateTokens = [
+    String.fromCodePoint(0x4f55, 0x4f9d, 0x9716),
+    String.fromCodePoint(0x63a8, 0x514d),
+    String.fromCodePoint(0x4fdd, 0x7814),
+    "potential employer"
+  ];
+  for (const page of pages) {
+    const html = await readFile(path.join(siteRoot, page), "utf8");
+    for (const token of privateTokens) assert.equal(html.toLowerCase().includes(token), false, `${page} contains private context`);
+  }
+});
+
 test("every page uses the confirmed canonical base", async () => {
   for (const page of pages) {
     const html = await readFile(path.join(siteRoot, page), "utf8");
@@ -128,7 +141,7 @@ test("every visible page title uses the confirmed Creator For the World subtitle
 test("About includes the concise Personal Statement without a separate project-link group", async () => {
   const html = await readFile(path.join(siteRoot, "about/index.html"), "utf8");
   assert.match(html, /<h2 id="personal-statement"[^>]*>Personal Statement<\/h2>/);
-  assert.equal(html.includes("我是何依霖,是浙江大学会计学23级本科生"), true);
+  assert.equal(html.includes("我是 Yasmine，是浙江大学会计学本科生。"), true);
   assert.doesNotMatch(html, /class="about-project-links"/);
   assert.equal(html.includes("CalcAI 微积分AI助教"), true);
 });
