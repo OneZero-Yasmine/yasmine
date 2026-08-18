@@ -1,3 +1,5 @@
+import site from "./src/_data/site.json" with { type: "json" };
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
@@ -5,7 +7,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("asArray", (value) => Object.values(value ?? {}));
   eleventyConfig.addFilter("pad2", (value) => String(value).padStart(2, "0"));
   eleventyConfig.addFilter("absoluteUrl", (value) =>
-    new URL(String(value ?? "").replace(/^\//, ""), "https://onezero-yasmine.github.io/yasmine/").href
+    new URL(String(value ?? "").replace(/^\//, ""), site.baseUrl).href
   );
 
   return {

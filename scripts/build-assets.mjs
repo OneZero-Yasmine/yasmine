@@ -191,6 +191,18 @@ async function buildVideos() {
   await webp(out("slides", "calculus-ai", "slide-02.webp"), path.join(posterDir, "calculus-ai.webp"), 1280, 82);
 }
 
+async function buildOgImages() {
+  const ogDir = out("images", "og", "projects");
+  await ensure(ogDir);
+  for (const video of videos) {
+    await sharp(out("images", "posters", `${video.name}.webp`))
+      .resize({ width: 1200, height: 630, fit: "contain", background: "#e8dbcd" })
+      .flatten({ background: "#e8dbcd" })
+      .jpeg({ quality: 88, mozjpeg: true })
+      .toFile(path.join(ogDir, `${video.name}.jpg`));
+  }
+}
+
 async function verifyBudget() {
   for (const video of videos) {
     const file = out("video", `${video.name}.mp4`);
@@ -207,6 +219,7 @@ await buildLife();
 await buildNotes();
 await buildSlides();
 await buildVideos();
+await buildOgImages();
 await verifyBudget();
 
 console.log("Web assets generated from the confirmed local source materials.");

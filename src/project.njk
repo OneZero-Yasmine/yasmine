@@ -3,12 +3,13 @@ pagination:
   data: projects
   size: 1
   alias: project
+  addAllPagesToCollections: true
 layout: layouts/base.njk
 permalink: "/project/{{ project.slug }}/index.html"
 eleventyComputed:
   title: "{{ project.title }}"
   description: "{{ project.description }}"
-  ogImage: "{{ project.video.poster }}"
+  ogImage: "{{ project.ogImage }}"
 activeKey: work
 ---
 <div class="page-shell page-shell--project">
