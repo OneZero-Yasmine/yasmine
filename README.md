@@ -8,7 +8,6 @@
 
 ```bash
 npm install
-npm run assets
 npm run dev
 ```
 
@@ -20,6 +19,25 @@ npm test
 ```
 
 输出目录为 `_site/`，GitHub Pages 子路径为 `/yasmine/`。推送到 `main` 后，GitHub Actions 会在构建与测试通过后自动发布。
+
+## 维护者资产生成
+
+`npm run assets` 仅供站点维护者使用，需要 `.gitignore` 中的本地私有素材，以及 PATH 中可用的 `ffmpeg` 和 `heif-convert`：
+
+```bash
+npm run assets
+```
+
+演示文稿先在本地导出为 PNG，再由脚本生成公开的 WebP 衍生图：
+
+| 本地中间目录 | 内容 | 导出约定 |
+|---|---|---|
+| `tmp/source-render/calculus-ai/` | CalcAI 项目演示 | 1600×900，`slide-01.png` 起连续编号 |
+| `tmp/source-render/tiger/` | Tiger Begins 项目演示 | 1600×900，`slide-01.png` 起连续编号 |
+| `tmp/source-render/voxsee-review/` | Voxsee 评审材料 | 1600×900，`slide-01.png` 起连续编号 |
+| `tmp/source-review/voxsee-pptx/` | Voxsee 项目故事 | 1600×900，`slide-01.png` 起连续编号 |
+
+中间目录和原始演示文稿均不提交；脚本会用纸张背景补齐非 16:9 输入，不裁剪内容。
 
 ## 内容与版权
 

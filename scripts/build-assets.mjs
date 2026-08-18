@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { cp, mkdir, readdir, stat } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import sharp from "sharp";
@@ -54,9 +54,15 @@ async function copyFonts() {
   const fileDir = out("fonts", "files");
   await ensure(fontDir, fileDir);
 
-  await cp(at("node_modules", "@fontsource", "noto-serif-sc", "400.css"), path.join(fontDir, "noto-serif-sc.css"), { force: true });
+  const notoSource = at("node_modules", "@fontsource", "noto-serif-sc", "400.css");
+  const notoCss = (await readFile(notoSource, "utf8"))
+    .replace(/,\s*url\([^)]+\.woff\)\s*format\(['"]woff['"]\)/g, "");
+  await writeFile(path.join(fontDir, "noto-serif-sc.css"), notoCss);
+
+  const aggregate = "noto-serif-sc-chinese-simplified-400-normal.woff2";
+  await rm(path.join(fileDir, aggregate), { force: true });
   const notoFiles = await readdir(at("node_modules", "@fontsource", "noto-serif-sc", "files"));
-  for (const filename of notoFiles.filter((name) => name.endsWith("-400-normal.woff2"))) {
+  for (const filename of notoFiles.filter((name) => name.endsWith("-400-normal.woff2") && name !== aggregate)) {
     await cp(at("node_modules", "@fontsource", "noto-serif-sc", "files", filename), path.join(fileDir, filename), { force: true });
   }
 
@@ -75,10 +81,13 @@ async function buildContact() {
 
 async function decodeHeic(filename, outputName) {
   const output = path.join(tmpRoot, outputName);
-  const located = await exec("where.exe", ["heif-convert"], { windowsHide: true });
-  const converter = located.stdout.split(/\r?\n/).find(Boolean);
-  if (!converter) throw new Error("heif-convert was not found in PATH");
-  await run(process.env.ComSpec ?? "cmd.exe", ["/d", "/c", converter, source("About页参考资料", "Life照片", filename), output]);
+  const input = source("About页参考资料", "Life照片", filename);
+  try {
+    await run("heif-convert", [input, output]);
+  } catch (error) {
+    if (process.platform !== "win32" || error.code !== "ENOENT") throw error;
+    await run(process.env.ComSpec ?? "cmd.exe", ["/d", "/s", "/c", "heif-convert", input, output]);
+  }
   return output;
 }
 

@@ -97,6 +97,18 @@ for (const [projectIndex, project] of (projects ?? []).entries()) {
   }
 }
 
+const notoCssPath = path.join(root, "src", "assets", "fonts", "noto-serif-sc.css");
+const notoCss = await readFile(notoCssPath, "utf8");
+if (/https?:\/\//.test(notoCss)) errors.push("noto-serif-sc.css: external font URLs are not allowed");
+for (const match of notoCss.matchAll(/url\(([^)]+)\)/g)) {
+  const reference = match[1].replace(/^['"]|['"]$/g, "");
+  if (!existsSync(path.resolve(path.dirname(notoCssPath), reference))) {
+    errors.push(`noto-serif-sc.css: missing font file ${reference}`);
+  }
+}
+const aggregateFont = path.join(root, "src", "assets", "fonts", "files", "noto-serif-sc-chinese-simplified-400-normal.woff2");
+if (existsSync(aggregateFont)) errors.push("noto-serif-sc.css: unreferenced aggregate font must not be published");
+
 const videoDir = path.join(root, "src", "assets", "video");
 for (const filename of await readdir(videoDir)) {
   const info = await stat(path.join(videoDir, filename));
