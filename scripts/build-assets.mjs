@@ -31,6 +31,15 @@ async function webp(input, output, width, quality = 78) {
     .toFile(output);
 }
 
+async function slideWebp(input, output) {
+  await sharp(input)
+    .rotate()
+    .resize({ width: 1600, height: 900, fit: "contain", background: "#e8dbcd" })
+    .flatten({ background: "#e8dbcd" })
+    .webp({ quality: 78, effort: 5 })
+    .toFile(output);
+}
+
 async function copyDecor() {
   const from = at("素材", "加工后");
   const to = out("images", "decor");
@@ -126,7 +135,7 @@ async function convertSlides(inputDir, outputDir) {
   const files = (await readdir(inputDir)).filter((name) => /^slide-\d+\.png$/.test(name)).sort(numericSort);
   if (!files.length) throw new Error(`No slide renders found in ${inputDir}`);
   for (let index = 0; index < files.length; index += 1) {
-    await webp(path.join(inputDir, files[index]), path.join(outputDir, `slide-${String(index + 1).padStart(2, "0")}.webp`), 1600, 78);
+    await slideWebp(path.join(inputDir, files[index]), path.join(outputDir, `slide-${String(index + 1).padStart(2, "0")}.webp`));
   }
 }
 

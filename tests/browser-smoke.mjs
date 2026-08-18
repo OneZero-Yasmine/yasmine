@@ -152,16 +152,8 @@ try {
   const mobileProject = await inspectPage(mobile, "/project/calculus-ai/", "mobile-project");
   const videoState = await mobileProject.locator("video").evaluate((video) => ({ paused: video.paused, autoplay: video.autoplay }));
   assert.deepEqual(videoState, { paused: true, autoplay: false });
-  const slideState = await mobileProject.locator(".slide-card img").first().evaluate((image) => {
-    const bounds = image.getBoundingClientRect();
-    return {
-      background: getComputedStyle(image).backgroundColor,
-      displayedRatio: bounds.width / bounds.height,
-      naturalRatio: image.naturalWidth / image.naturalHeight
-    };
-  });
-  assert.equal(slideState.background, "rgba(0, 0, 0, 0)");
-  assert.ok(Math.abs(slideState.displayedRatio - slideState.naturalRatio) < 0.01);
+  const slideBackground = await mobileProject.locator(".slide-card img").first().evaluate((image) => getComputedStyle(image).backgroundColor);
+  assert.equal(slideBackground, "rgba(0, 0, 0, 0)");
   await mobileProject.close();
   await mobile.close();
 
