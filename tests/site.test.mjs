@@ -5,6 +5,8 @@ import test from "node:test";
 
 const root = process.cwd();
 const siteRoot = path.join(root, "_site");
+const site = JSON.parse(await readFile(path.join(root, "src", "_data", "site.json"), "utf8"));
+const projects = JSON.parse(await readFile(path.join(root, "src", "_data", "projects.json"), "utf8"));
 const pages = [
   "index.html",
   "about/index.html",
@@ -27,8 +29,28 @@ async function exists(location) {
   }
 }
 
+function absoluteUrl(value) {
+  return new URL(value.replace(/^\//, ""), site.baseUrl).href;
+}
+
 test("generates exactly the ten required page contracts", async () => {
   for (const page of pages) assert.equal(await exists(path.join(siteRoot, page)), true, `${page} should exist`);
+});
+
+test("sitemap contains every public page and excludes the 404 page", async () => {
+  const xml = await readFile(path.join(siteRoot, "sitemap.xml"), "utf8");
+  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const expectedPaths = [
+    "/",
+    "/about/",
+    "/work/",
+    "/notes/",
+    "/awards/",
+    ...projects.map((project) => `/project/${project.slug}/`)
+  ];
+  assert.equal(urls.length, 9);
+  assert.deepEqual(new Set(urls), new Set(expectedPaths.map(absoluteUrl)));
+  assert.equal(urls.some((url) => url.endsWith("/404.html")), false);
 });
 
 test("production HTML contains no visual-mock sample content", async () => {
@@ -55,8 +77,20 @@ test("public pages omit private identity and planning context", async () => {
 test("every page uses the confirmed canonical base", async () => {
   for (const page of pages) {
     const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.match(html, /<link rel="canonical" href="https:\/\/onezero-yasmine\.github\.io\/yasmine\//);
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+    assert.equal(canonical?.startsWith(site.baseUrl), true);
     assert.equal(html.includes("/personal-website/"), false);
+  }
+});
+
+test("project pages use dedicated self-hosted JPEG share images", async () => {
+  for (const project of projects) {
+    const relative = `assets/images/og/projects/${project.slug}.jpg`;
+    const html = await readFile(path.join(siteRoot, "project", project.slug, "index.html"), "utf8");
+    assert.match(html, new RegExp(`<meta property="og:image" content="${absoluteUrl(`/${relative}`)}">`));
+    assert.equal(await exists(path.join(siteRoot, relative)), true);
+    assert.match(project.video.poster, /\.webp$/);
+    assert.match(project.ogImage, /\.jpg$/);
   }
 });
 
