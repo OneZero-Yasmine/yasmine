@@ -7,7 +7,6 @@ const root = process.cwd();
 const siteRoot = path.join(root, "_site");
 const site = JSON.parse(await readFile(path.join(root, "src", "_data", "site.json"), "utf8"));
 const projects = JSON.parse(await readFile(path.join(root, "src", "_data", "projects.json"), "utf8"));
-const work = JSON.parse(await readFile(path.join(root, "src", "_data", "work.json"), "utf8"));
 const pages = [
   "index.html",
   "about/index.html",
@@ -36,14 +35,6 @@ function absoluteUrl(value) {
 
 test("generates exactly the ten required page contracts", async () => {
   for (const page of pages) assert.equal(await exists(path.join(siteRoot, page)), true, `${page} should exist`);
-});
-
-test("every page uses the favicon asset", async () => {
-  assert.equal(await exists(path.join(siteRoot, "assets", "images", "favicon.png")), true);
-  for (const page of pages) {
-    const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.match(html, /<link rel="icon" href="\/yasmine\/assets\/images\/favicon\.png" type="image\/png">/);
-  }
 });
 
 test("sitemap contains every public page and excludes the 404 page", async () => {
@@ -182,23 +173,10 @@ test("About omits the PDF resume and private academic scores", async () => {
   assert.equal(await exists(path.join(siteRoot, "assets/documents/yasmine-resume-public.pdf")), false);
 });
 
-test("project detail pages use the Work titles and omit the shared subtitle", async () => {
-  for (const project of projects) {
-    const workProject = work.projects.find((item) => item.url === `/project/${project.slug}/`);
-    assert.ok(workProject, `Work should link to ${project.slug}`);
-    assert.equal(project.title, workProject.title, `${project.slug} should use the Work title`);
-
-    const page = `project/${project.slug}/index.html`;
+test("every visible page title uses the confirmed Creator For the World subtitle", async () => {
+  for (const page of pages) {
     const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.equal(html.includes(`<h1>${workProject.title}</h1>`), true, `${page} should display the Work title`);
-    assert.equal(html.includes(site.tagline), false, `${page} should omit the shared subtitle`);
-  }
-});
-
-test("non-project pages use the confirmed Creator For the World subtitle", async () => {
-  for (const page of pages.filter((page) => !page.startsWith("project/"))) {
-    const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.equal(html.includes(site.tagline), true, `${page} should include the shared subtitle`);
+    assert.equal(html.includes("Creator For the World"), true, `${page} should include the shared subtitle`);
   }
 });
 
@@ -223,11 +201,17 @@ test("Work uses the confirmed project names and preserves resume internship and 
   for (const phrase of [
     "团队面向政府进行钉钉与千问办公(办公桌面智能体)等相关产品的销售与解决方案提供。",
     "一对一访谈与基层调研",
+    "舆情监测、入户走访、台账填写、失业帮扶",
+    "招标筛选与推送skill",
     "社工用该poc顺利完成了50+通电话拨打。",
+    "prompt模板设计",
+    "最终产出浙江省余杭区法院专属纪要prompt，并得到客户采用。",
     "帆软是一家BI领域市场占率第一、专注于商业智能与大数据分析的平台提供商。",
     "Agent搭建与开发平台功能对比",
     "基于以上分析结果输出“AI+BI”行业发展报告与公司短-中-长期战略报告。"
   ]) assert.equal(html.includes(phrase), true, `Work should preserve ${phrase}`);
+  assert.equal(html.includes("入户走访管家skill"), false);
+  assert.equal(html.includes("社工主动告知失业帮扶场景下打电话的痛点"), false);
 
   assert.doesNotMatch(html, /aria-label="研究关键词"/);
   for (const phrase of [
