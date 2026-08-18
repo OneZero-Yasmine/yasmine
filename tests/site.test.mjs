@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
+import sharp from "sharp";
 import test from "node:test";
 
 const root = process.cwd();
@@ -38,11 +39,30 @@ test("generates exactly the ten required page contracts", async () => {
   for (const page of pages) assert.equal(await exists(path.join(siteRoot, page)), true, `${page} should exist`);
 });
 
-test("every page uses the favicon asset", async () => {
-  assert.equal(await exists(path.join(siteRoot, "assets", "images", "favicon.png")), true);
+test("every page uses versioned standard-size favicon assets", async () => {
+  const faviconRoot = path.join(siteRoot, "assets", "images");
+  for (const size of [16, 32]) {
+    const location = path.join(faviconRoot, `favicon-emblem-v2-${size}.png`);
+    assert.equal(await exists(location), true);
+    const metadata = await sharp(location).metadata();
+    assert.equal(metadata.width, size);
+    assert.equal(metadata.height, size);
+  }
+
+  const ico = await readFile(path.join(faviconRoot, "favicon-emblem-v2.ico"));
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 2);
+  assert.deepEqual([ico.readUInt8(6), ico.readUInt8(22)], [16, 32]);
+
+  const expectedTags = [
+    '<link rel="shortcut icon" href="/yasmine/assets/images/favicon-emblem-v2.ico" type="image/x-icon" sizes="16x16 32x32">',
+    '<link rel="icon" href="/yasmine/assets/images/favicon-emblem-v2-16.png" type="image/png" sizes="16x16">',
+    '<link rel="icon" href="/yasmine/assets/images/favicon-emblem-v2-32.png" type="image/png" sizes="32x32">'
+  ];
   for (const page of pages) {
     const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.match(html, /<link rel="icon" href="\/yasmine\/assets\/images\/favicon\.png" type="image\/png">/);
+    for (const tag of expectedTags) assert.equal(html.includes(tag), true, `${page} should include ${tag}`);
+    assert.equal(html.includes("/assets/images/favicon.png"), false);
   }
 });
 
