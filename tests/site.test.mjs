@@ -7,6 +7,7 @@ const root = process.cwd();
 const siteRoot = path.join(root, "_site");
 const site = JSON.parse(await readFile(path.join(root, "src", "_data", "site.json"), "utf8"));
 const projects = JSON.parse(await readFile(path.join(root, "src", "_data", "projects.json"), "utf8"));
+const work = JSON.parse(await readFile(path.join(root, "src", "_data", "work.json"), "utf8"));
 const pages = [
   "index.html",
   "about/index.html",
@@ -181,10 +182,23 @@ test("About omits the PDF resume and private academic scores", async () => {
   assert.equal(await exists(path.join(siteRoot, "assets/documents/yasmine-resume-public.pdf")), false);
 });
 
-test("every visible page title uses the confirmed Creator For the World subtitle", async () => {
-  for (const page of pages) {
+test("project detail pages use the Work titles and omit the shared subtitle", async () => {
+  for (const project of projects) {
+    const workProject = work.projects.find((item) => item.url === `/project/${project.slug}/`);
+    assert.ok(workProject, `Work should link to ${project.slug}`);
+    assert.equal(project.title, workProject.title, `${project.slug} should use the Work title`);
+
+    const page = `project/${project.slug}/index.html`;
     const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.equal(html.includes("Creator For the World"), true, `${page} should include the shared subtitle`);
+    assert.equal(html.includes(`<h1>${workProject.title}</h1>`), true, `${page} should display the Work title`);
+    assert.equal(html.includes(site.tagline), false, `${page} should omit the shared subtitle`);
+  }
+});
+
+test("non-project pages use the confirmed Creator For the World subtitle", async () => {
+  for (const page of pages.filter((page) => !page.startsWith("project/"))) {
+    const html = await readFile(path.join(siteRoot, page), "utf8");
+    assert.equal(html.includes(site.tagline), true, `${page} should include the shared subtitle`);
   }
 });
 
