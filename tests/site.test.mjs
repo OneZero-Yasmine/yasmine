@@ -223,10 +223,14 @@ test("project detail pages use the Work titles and omit the shared subtitle", as
   }
 });
 
-test("non-project pages use the confirmed Creator For the World subtitle", async () => {
-  for (const page of pages.filter((page) => !page.startsWith("project/"))) {
+test("only the home cover shows Creator For the World below Yasmine", async () => {
+  for (const page of pages) {
     const html = await readFile(path.join(siteRoot, page), "utf8");
-    assert.equal(html.includes(site.tagline), true, `${page} should include the shared subtitle`);
+    const expectedCount = page === "index.html" ? 1 : 0;
+    assert.equal(html.split(site.tagline).length - 1, expectedCount, `${page} should show the tagline ${expectedCount} times`);
+    if (page === "index.html") {
+      assert.match(html, /<h1 class="home-cover__name" lang="en">Yasmine<\/h1>\s*<p class="home-cover__tagline" lang="en">Creator For the World<\/p>/);
+    }
   }
 });
 
